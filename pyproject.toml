@@ -10,13 +10,16 @@ python = "^3.9"
 fastapi = "^0.70.1"
 SQLAlchemy = "^1.4.29"
 alembic = "^1.7.5"
+pydantic = "^1.9.0"
 
 [tool.poetry.dev-dependencies]
 uvicorn = "^0.16.0"
+requests = "^2.26.0"
 
 [tool.poetry.scripts]
 app = "books:run"
 integration = "tests:run_integration_tests"
+e2e = "tests:run_e2e_tests"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

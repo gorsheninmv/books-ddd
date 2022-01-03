@@ -51,7 +51,7 @@ class BookRepository(BookRepositoryBase):
     def __init__(self, session: Session):
         self.session = session
 
-    def find_by_id(self, id: str) -> Book | None:
+    def find_by_id(self, id: int) -> Book | None:
         try:
             book_dto = self.session.query(BookDTO).filter_by(id=id).one()
         except NoResultFound:

@@ -16,6 +16,3 @@ class TestBookRepository(unittest.TestCase):
             book = book_repo.create(book)
             print(book.id)
             self.assertTrue(book.id is not None)
-
-if __name__ == '__main__':
-    unittest.main()

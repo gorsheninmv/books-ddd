@@ -2,16 +2,16 @@ from typing import Iterator, List
 from fastapi import Depends, FastAPI, HTTPException, status
 from sqlalchemy.orm import Session
 
-from .application.book import (
+from ..application.book import (
     BookReadModel,
     BookQuery,
     ErrorMessageBooksNotFoundError,
 )
 
-from .domain.book import BookRepository
+from ..domain.book import BookRepository
 
-from .infrastructure.database import SessionLocal
-from .infrastructure.book import BookRepository as BookRepositoryImpl
+from ..infrastructure.database import SessionLocal
+from ..infrastructure.book import BookRepository as BookRepositoryImpl
 
 app = FastAPI()
 
@@ -23,7 +23,6 @@ def get_session() -> Iterator[Session]:
         session.close()
 
 def book_repo(session: Session = Depends(get_session)) -> BookRepository:
-    print(session)
     return BookRepositoryImpl(session)
 
 def book_query(book_repo: BookRepository = Depends(book_repo)) -> BookQuery:
@@ -53,4 +52,3 @@ async def get_books(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
         )
-    return books

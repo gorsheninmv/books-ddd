@@ -74,7 +74,7 @@ class BookRepository(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def find_by_id(self, id: str) -> Book | None:
+    def find_by_id(self, id: int) -> Book | None:
         raise NotImplementedError
 
     @abstractmethod
